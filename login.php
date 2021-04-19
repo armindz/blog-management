@@ -3,6 +3,7 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <title>Login - Blog Management</title>
     <link rel="stylesheet" href="css/bootstrap.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -45,41 +46,64 @@
     <a href="" class="navbar-brand mx-auto "><img id="logoSmall" src="img/logo/bmicon.png"></a>
 
     <!-- /navbar brand -->
-
-
-    <!-- collapse button -->
-    <button class="navbar-toggler toggler-example text-light float-end" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation"><span class="dark-blue-text"><i
-class="bi bi-list"></i></span></button>
-    <!-- /collapse button -->
-
-    <!-- collapsible content -->
-    <div class="collapse navbar-collapse text-center" id="navbarSupportedContent1">
-
-        <!-- navbar items -->
-        <ul class="navbar-nav mr-auto ">
-            <li class="nav-item activeBorderBottom">
-                <a class="nav-link text-light" href="index.html">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-light" href="movies.html">Movies</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-light" href="contact.html">Contact us</a>
-            </li>
-        </ul>
-        <!-- /navbar items -->
-    </div>
 </div>
-<!-- /collapsible content -->
-
-
 </nav>
 
 <!-- ------------------------- END OF SMALL HEADER ----------------------- -->
 </header>
 
 
+<!-- ----------------------------- LOGIN FORM ---------------------------- -->
 
+
+    <div class="container ">
+        <div class="d-flex flex-column min-vh-100 justify-content-center align-items-center ">
+            
+                
+             <div class="form col-7 col-sm-7 col-md-6 col-lg-4 col-xl-3 shadow p-3 bg-body rounded px-2 mx-auto my-auto">
+                 
+             <h3 class="text-center my-4">Login</h3>
+                 <input type="username" id="loginUsername" placeholder="Username" class="form-control my-3 rounded-pill ">
+                
+                 <input type="password" id="loginPassword" placeholder="Password" class="form-control my-3 rounded-pill">
+
+                <div class="text-center d-grid gap-2 d-flex justify-content-center ">
+                 <button type="submit" class="btn btn-primary my-3 col-10 rounded-pill">Log in </button>
+                </div>
+            </div>
+    
+        </div>
+  </div>
+      <!-- ----------------------------- /LOGIN FORM ---------------------------- -->
+
+
+
+
+
+
+
+
+
+
+    <!-- -------------------------- END OF LOGIN FORM ------------------------ -->
+
+ <!-- -----------------------   FOOTER ----------------------- -->
+ <footer class="bg-light text-center text-lg-start">
+
+<div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    <a class="text-dark mx-3" href="index.php">Homepage</a>
+    <a class="text-dark mx-3" href="#">About us</a>
+    <a class="text-dark mx-3" href="contact.php">Contact us</a>
+    </br>
+    </br>
+    © 2021 Copyright:
+    <a class="text-dark" href="#">BM Inc. </a>
+</div>
+
+</footer>
+
+
+<!-- -----------------------  END OF FOOTER ----------------------- -->
 </body>
 
 

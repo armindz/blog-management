@@ -3,6 +3,7 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <title>Home - Blog Management</title>
     <link rel="stylesheet" href="css/bootstrap.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -112,6 +113,39 @@ class="bi bi-list"></i></span></button>
 <!-- ------------------------- END OF SMALL HEADER ----------------------- -->
 </header>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <!-- -----------------------   FOOTER ----------------------- -->
+ <footer class="bg-light text-center text-lg-start">
+
+<div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    <a class="text-dark mx-3" href="index.php">Homepage</a>
+    <a class="text-dark mx-3" href="#">About us</a>
+    <a class="text-dark mx-3" href="contact.php">Contact us</a>
+    </br>
+    </br>
+    © 2021 Copyright:
+    <a class="text-dark" href="#">BM Inc. </a>
+</div>
+
+</footer>
+
+
+<!-- -----------------------  END OF FOOTER ----------------------- -->
 
 
 </body>
