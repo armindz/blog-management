@@ -176,7 +176,7 @@ class="bi bi-list"></i></span></button>
 
 <div class="container col-md-8 my-4 border shadow">
 
-  <form name="createPost" method="POST" action=""> 
+  <form name="createPost" method="POST" action="postService.php"> 
 
 <div class="row d-flex justify-content-center mx-auto my-4">
 
@@ -198,7 +198,7 @@ class="bi bi-list"></i></span></button>
 
   <div class="col-md-4 ">
   <label for="image" class="form-label">Image</label>
-  <input type="text" class="form-control" name="image" id="postImage">
+  <input type="text" class="form-control" name="imageURL" id="postImage">
 </div>
 
 

@@ -1,5 +1,5 @@
 <?php
-include_once('dbUser.php');
+require_once 'dbUser.php';
 
 $userDb = new dbUser();
 

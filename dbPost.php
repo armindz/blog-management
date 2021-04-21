@@ -1,6 +1,7 @@
 <?php 
-require_once('post.php');
-    class dbPost extends dbConnect{
+require_once 'dbConnect.php';
+require_once 'post.php';
+    class dbPost extends dbConnect {
         
         function __construct()
         {
@@ -10,16 +11,16 @@ require_once('post.php');
         function storePostToDb($title,$content,$date,$imageURL) {
 
             $id = $this->generatePostId();
-
-            $sql = "INSERT INTO posts VALUES ('".$id."','".$title."','".$content."','".$date."','".$imageURL."')";
-
-            if($result = $this->connect()->query($sql)) {
+            $dateFormat = date("Y-m-d", strtotime($date));
+            $sql = "INSERT INTO posts VALUES ('".$id."','".$title."','".$content."','".$dateFormat."','".$imageURL."')";
+           
+            if($this->connect()->query($sql)) {
                 return true;
             }
             else {
                 return false;
             }
-            
+           
         }
 /*
         function storePostToDatabase($post) {
