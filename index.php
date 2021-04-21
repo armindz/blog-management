@@ -44,7 +44,7 @@
  <nav class="navbar navbar-expand-lg navbar-light float-left ">
 
 <!-- logo brand -->
-<div class="col-3 mx-auto d-none d-lg-block float-end">
+<div class="col-3 mx-3 d-none d-lg-block float-end">
     <a class="navbar-brand">
         <img class="logo" src="img/logo/bmLogo.png">
     </a>
@@ -85,18 +85,14 @@
 
 </div>
 <div class="col-1 mx-5 d-none d-lg-block">
-<p class="text-light"> <?php echo "Welcome, ". $_SESSION['username']; ?>
+<p class="text-light text-center mx-auto my-auto" > <?php echo "Welcome, ". $_SESSION['username']; ?>
 </div>
 <div class="col-2 mx-auto d-none d-lg-block">
 
 <form name="logout" method="post" action="logoutService.php">
 <button class="btn btn-primary" name="logout" alt="Log out" type="submit">
 <i class="bi bi-box-arrow-right"></i>
-
 </button>
-
-
-
 </form>
 
 </div>
@@ -112,6 +108,7 @@
 
 <!-- navbar brand -->
 <div class="col-11 d-block d-lg-none">
+
     <a href="" class="navbar-brand mx-auto "><img id="logoSmall" src="img/logo/bmicon.png"></a>
 
     <!-- /navbar brand -->
@@ -136,6 +133,14 @@ class="bi bi-list"></i></span></button>
             <li class="nav-item">
                 <a class="nav-link text-light" href="contact.html">Contact us</a>
             </li>
+
+            <li>
+                <form name="logout" method="post" action="logoutService.php">
+                    <button class="btn btn-primary" name="logout" alt="Log out" type="submit">
+                        <i class="bi bi-box-arrow-right"> Log out</i>
+                    </button>
+                </form>
+            </li>
         </ul>
         <!-- /navbar items -->
     </div>
@@ -149,11 +154,59 @@ class="bi bi-list"></i></span></button>
 </header>
 
 
+    <div class="container mx-auto my-4">
+ 
+        <div class="d-flex justify-content-center">
+            <h3 > Blog posts list </h3>
+        </div>
 
 
 
+        <div class="d-flex justify-content-end my-4 mx-auto">
+             <form name="newPost" method="POST" action="createPost.php">
+                 <button name="create_post" type="submit" class="btn btn-secondary">
+                     <i class="bi bi-pencil-square"></i> New post
+                    </button>
+                </form> 
+        </div>
+    </div>
 
 
+    
+    <div class="container col-md-8">
+
+        <table class="table border shadow">
+            <thead>
+                <tr>
+                    <th class="col-1" scope="col">#</th>
+                    <th class="col-6" scope="col">TITLE</th>
+                     <th class="col-3"scope="col">DATE</th>
+                     <th class="col-2" scope="col">ACTIONS</th>
+                 </tr>
+            </thead>
+           <tbody>
+             <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                 <td>Otto</td>
+                 <td>@mdo</td>
+             </tr>
+         <tr>
+             <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table>
+
+</div>
 
 
 
