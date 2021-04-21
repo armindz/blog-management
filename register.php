@@ -1,9 +1,39 @@
+<?php
+include_once('dbUser.php');
+
+$userDb = new dbUser();
+$username = $_POST['username'];
+$password = $_POST['password'];
+$user = new User($username, $password, $userDb->generateUserId());
+echo $userDb->generateUserId();
+
+if(isset($_POST['register'])){
+if($userDb->storeUserToDatabase($user)) {
+
+    echo "Registered successfully";
+    header('location:login.php');
+    
+}
+
+else {
+    echo "Something went wrong. Try again";
+    header('location:register.php');
+
+}
+}
+
+
+?>
+
+
+
+
 <!DOCTYPE html>
 
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Login - Blog Management</title>
+    <title>Register - Blog Management</title>
     <link rel="icon" href="img/logo/bmicon.png">
     <link rel="stylesheet" href="css/bootstrap.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -27,8 +57,8 @@
 
 <!-- logo brand -->
 <div class="col-10 mx-auto d-none d-lg-block float-end">
-    <a class="navbar-brand" href="index.php">
-        <img class="logo"  src="img/logo/bmLogo.png">
+    <a class="navbar-brand">
+        <img class="logo" src="img/logo/bmLogo.png">
     </a>
 </div>
 <!-- /logo brand-->
@@ -54,32 +84,32 @@
 </header>
 
 
-<!-- ----------------------------- LOGIN FORM ---------------------------- -->
+<!-- ----------------------------- REGISTER FORM ---------------------------- -->
 
 
     <div class="container ">
         <div class="d-flex flex-column min-vh-100 justify-content-center align-items-center ">
         
            <div class="form col-7 col-sm-7 col-md-6 col-lg-4 col-xl-3 shadow p-3 bg-body rounded px-2 mx-auto my-auto">
-        <form name="login" method="POST" action="loginService.php">  
+        <form name="register" method="POST" action="">  
                  
-             <h3 class="text-center my-4">Login</h3>
-                 <input type="username" name="username" id="loginUsername" placeholder="Username" class="form-control my-3 rounded-pill ">
+             <h3 class="text-center my-4">Registration</h3>
+                 <input type="username" name="username" id="registerUsername" placeholder="Username" class="form-control my-3 rounded-pill ">
                 
-                 <input type="password" name="password" id="loginPassword" placeholder="Password" class="form-control my-3 rounded-pill">
+                 <input type="password" name="password" id="registerPassword" placeholder="Password" class="form-control my-3 rounded-pill">
                  <p class="change_link text-center">  
-                                    Not a member yet ?  
-                                    <a href="register.php" class="to_register">Join us</a>  
+                                    Already member ?  
+                                    <a href="login.php" class="to_register">Log in</a>  
                                 </p>  
                 <div class="text-center d-grid gap-2 d-flex justify-content-center ">
-                 <button type="submit" name="login" class="btn btn-primary my-3 col-10 rounded-pill">Log in </button>
+                 <button type="submit" name="register" class="btn btn-primary my-3 col-10 rounded-pill">Register</button>
                 </div>
            </form>
        </div>
    
         </div>
   </div>
-      <!-- ----------------------------- /LOGIN FORM ---------------------------- -->
+      <!-- ----------------------------- /REGISTER FORM ---------------------------- -->
 
 
 
@@ -90,7 +120,7 @@
 
 
 
-    <!-- -------------------------- END OF LOGIN FORM ------------------------ -->
+   
 
  <!-- -----------------------   FOOTER ----------------------- -->
  <footer class="bg-light text-center text-lg-start">

@@ -1,9 +1,28 @@
+
+<?php
+
+
+	//start session
+	session_start();
+ 
+	//redirect if logged in
+	if(!isset($_SESSION['user'])){
+		header('location:login.php');
+	}
+
+    
+?>
+
+
+
+
 <!DOCTYPE html>
 
 <html>
 <head>
     <meta charset="utf-8">
     <title>Home - Blog Management</title>
+    <link rel="icon" href="img/logo/bmicon.png">
     <link rel="stylesheet" href="css/bootstrap.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -25,7 +44,7 @@
  <nav class="navbar navbar-expand-lg navbar-light float-left ">
 
 <!-- logo brand -->
-<div class="col-4 mx-auto d-none d-lg-block float-end">
+<div class="col-3 mx-auto d-none d-lg-block float-end">
     <a class="navbar-brand">
         <img class="logo" src="img/logo/bmLogo.png">
     </a>
@@ -63,6 +82,22 @@
           </button>
         </div>
     </div>
+
+</div>
+<div class="col-1 mx-5 d-none d-lg-block">
+<p class="text-light"> <?php echo "Welcome, ". $_SESSION['username']; ?>
+</div>
+<div class="col-2 mx-auto d-none d-lg-block">
+
+<form name="logout" method="post" action="logoutService.php">
+<button class="btn btn-primary" name="logout" alt="Log out" type="submit">
+<i class="bi bi-box-arrow-right"></i>
+
+</button>
+
+
+
+</form>
 
 </div>
 <!-- /search bar -->
