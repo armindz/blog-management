@@ -42,6 +42,28 @@ require_once 'post.php';
             
         }
 */
+
+
+        function getAllPosts () {
+
+            $sql = "SELECT * FROM posts";
+            $result = $this->connect()->query($sql);
+
+            $listOfPosts = array();
+            if ($result->num_rows > 0) {
+                while($row = mysqli_fetch_assoc($result)) {
+
+                    $listOfPosts[] = $row;
+                }
+
+
+
+            }
+        
+            return $listOfPosts;
+
+        
+        }
         function getPostByPostId ($postId) {
 
             $sql = "SELECT * FROM posts WHERE id='".$postId."'";

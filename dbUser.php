@@ -93,7 +93,7 @@ session_start();
             $sql = "SELECT * FROM users WHERE username = '".$username."' AND password = '".$password."'";
             $result = $this->connect()->query($sql);  
             
-            if ($result->num_rows < 0) {
+            if ($result->num_rows > 0) {
                 $userData = $result->fetch_array();
                 $username = $userData['username'];
                 $password = $userData['password'];

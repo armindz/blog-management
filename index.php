@@ -1,6 +1,6 @@
 
 <?php
-
+    require_once 'dbPost.php';
 
 	//start session
 	session_start();
@@ -172,37 +172,55 @@ class="bi bi-list"></i></span></button>
     </div>
 
 
+
+<?php 
+    $postDb = new dbPost();
+    $listOfPosts = $postDb->getAllPosts();
+
+?>
     
     <div class="container col-md-8">
 
         <table class="table border shadow">
             <thead>
                 <tr>
-                    <th class="col-1" scope="col">#</th>
+                    
                     <th class="col-6" scope="col">TITLE</th>
                      <th class="col-3"scope="col">DATE</th>
+                     <th class="col-1" scope="col">AUTOR</th>
                      <th class="col-2" scope="col">ACTIONS</th>
                  </tr>
             </thead>
            <tbody>
-             <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                 <td>Otto</td>
-                 <td>@mdo</td>
-             </tr>
-         <tr>
-             <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
+           <?php
+            foreach($listOfPosts as $post) {
+                ?> <tr> 
+              
+                <td> <?php echo $post['title'];?> </td>
+                <td> <?php echo $post['date']; ?> </td>
+                <th scope="row">> </th>
+                <td> 
+
+                
+                <form name="delete" method="POST" action="">
+                <button name="delete" class="btn" type="submit">
+                <i class="bi bi-trash text-danger"></i>
+                </button>
+                </form> 
+                
+                <form name="view" method="POST" action="">
+                <button name="view" class="btn" type="submit">
+                <i class="bi bi-box-arrow-in-right "></i>
+                </button>
+                </form> 
+                
+                
+                </td>
+</tr>
+<?php
+            }
+?>
+
   </tbody>
 </table>
 
