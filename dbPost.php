@@ -69,13 +69,14 @@ require_once 'post.php';
             $sql = "SELECT * FROM posts WHERE id='".$postId."'";
 
             $result = $this->connect()->query($sql);
-
+/*
             if($result->num_rows > 0) {
                 $postData = $result->fetch_array();
                 $title = $postData['title'];
                 $content = $postData['content'];
                 $date = $postData['date'];
                 $imageURL = $postData['imageURL'];
+                
                 $post = new Post ($postId, $title, $content, $date, $imageURL);
                 return $post;
             }
@@ -83,8 +84,45 @@ require_once 'post.php';
             else {
                 return false;
             }
-        }
 
+            */
+
+
+
+            if(mysqli_num_rows($result) > 0){ 
+
+             while($row = mysqli_fetch_array($result)){
+
+                 $id = $row['id'];
+                 $title = $row['title'];
+                 $date = $row['date'];
+                 $content = $row['content'];
+                 $imageURL = $row['imageURL'];
+
+                 $post = new Post($id,$title,$content,$date,$imageURL);
+                 return $post;
+            }
+
+
+
+        }
+    }
+
+        function deletePostFromDatabase($postId) {
+
+            $sql = "DELETE FROM posts WHERE id='".$postId."'";
+
+           if( $result = $this->connect()->query($sql)) {
+               return true;
+           }
+
+           else {
+               return false;
+           }
+
+            
+
+        }
         function generatePostId() {
             $lastId = mysqli_insert_id($this->connect());
             return $lastId;

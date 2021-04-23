@@ -1,7 +1,9 @@
 
 <?php
     require_once 'dbPost.php';
+   
 
+   
 	//start session
 	session_start();
  
@@ -202,13 +204,15 @@ class="bi bi-list"></i></span></button>
                 <td> 
 
                 
-                <form name="delete" method="POST" action="">
+                <form name="delete" method="POST" action="postDelete.php">
+                <input id="postId" name="postId" type="hidden" value="<?php echo $post['id']?>">
                 <button name="delete" class="btn" type="submit">
                 <i class="bi bi-trash text-danger"></i>
                 </button>
                 </form> 
                 
-                <form name="view" method="POST" action="">
+                <form name="view" method="POST" action="postPreview.php">
+                <input id="postId" name="postId" type="hidden" value="<?php echo $post['id']?>">
                 <button name="view" class="btn" type="submit">
                 <i class="bi bi-box-arrow-in-right "></i>
                 </button>

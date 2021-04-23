@@ -5,7 +5,7 @@ $userDb = new dbUser();
 $username = $_POST['username'];
 $password = $_POST['password'];
 $user = new User($username, $password, $userDb->generateUserId());
-echo $userDb->generateUserId();
+
 
 if(isset($_POST['register'])){
 if($userDb->storeUserToDatabase($user)) {

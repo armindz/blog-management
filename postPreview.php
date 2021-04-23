@@ -1,14 +1,25 @@
 
 <?php
 
+require_once 'post.php';
+require_once 'dbPost.php';
+
+
 
 //start session
-session_start();
+ session_start();
 
 //redirect if logged in
 if(!isset($_SESSION['user'])){
     header('location:login.php');
 }
+
+
+$postId = $_POST['postId'];
+
+$postDb = new dbPost();
+
+$post = $postDb->getPostByPostId($postId);
 
 
 ?>
@@ -175,7 +186,7 @@ class="bi bi-list"></i></span></button>
 <div class="row d-flex justify-content-center mx-auto my-4">
 
 <div class="col-md-8 d-flex justify-content-center">
- <h2> Post title </h2>
+ <h2><?php echo $post->get_title();?></h2>
 </div>
 
 </div>
@@ -197,10 +208,7 @@ class="bi bi-list"></i></span></button>
 
 
 <div class="col-md-8 d-flex justify-content-center my-4 mx-auto">
-  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-  Sunt fuga asperiores odit ipsa itaque tempora recusandae, 
-  mollitia quia esse vero deleniti excepturi neque repellat. 
-  Natus nam voluptates fuga quibusdam rerum!</p>
+  <p><?php echo $post->get_content()?></p>
   </div>
 
 
@@ -217,7 +225,7 @@ class="bi bi-list"></i></span></button>
 
 
 <div class="col-md-4">
- <p> datum : 22.02.2021</p>
+ <p> <?php echo $post->get_date();?></p>
   </div>
 
   <div class="col-md-4 text-right ">
