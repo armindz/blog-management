@@ -6,15 +6,17 @@
         private $content;
         private $date;
         private $imageURL;
+        private $author;
     
 
-    function __construct($id,$title,$content,$date,$imageURL) {
+    function __construct($id,$title,$content,$date,$imageURL, $author) {
         
         $this->id = $id;
         $this->title = $title;
         $this->content =$content;
         $this->date = $date;
         $this->imageURL = $imageURL;
+        $this->author = $author;
 
     }
 
@@ -38,6 +40,9 @@
         return $this->imageURL;
     }
 
+    function get_author() {
+        return $this->author;
+    }
 
     
 }

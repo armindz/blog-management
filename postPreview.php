@@ -3,11 +3,15 @@
 
 require_once 'post.php';
 require_once 'dbPost.php';
+require_once 'dbUser.php';
 
 
 
 //start session
- session_start();
+if(!isset($_SESSION)) 
+{ 
+    session_start(); 
+} 
 
 //redirect if logged in
 if(!isset($_SESSION['user'])){
@@ -21,6 +25,8 @@ $postDb = new dbPost();
 
 $post = $postDb->getPostByPostId($postId);
 
+
+$userDb = new dbUser();
 
 ?>
 
@@ -55,48 +61,47 @@ $post = $postDb->getPostByPostId($postId);
 <nav class="navbar navbar-expand-lg navbar-light float-left ">
 
 <!-- logo brand -->
-<div class="col-3 mx-3 d-none d-lg-block float-end">
-<a class="navbar-brand" href="index.php">
-    <img class="logo" src="img/logo/bmLogo.png">
-</a>
+<div class="col-3 mx-auto d-none d-lg-block float-end">
+    <a class="navbar-brand" href="index.php">
+        <img class="logo" src="img/logo/bmLogo.png">
+    </a>
 </div>
 <!-- /logo brand-->
 
 <!-- navbar items -->
 <div class="col-4 mx-auto d-none d-lg-block">
-<ul class="navbar-nav">
-    <li class="nav-item activeBorderBottom mx-auto">
-        <a class="nav-link text-light " href="index.html">Homepage</a>
-    </li>
-    <li class="nav-item mx-auto">
-        <a class="nav-link text-light" href="movies.html">Movies</a>
-    </li>
-    <li class="nav-item mx-auto">
-        <a class="nav-link disabled" href="#">Series</a>
-    </li>
-    <li class="nav-item mx-auto">
-        <a class="nav-link text-light" href="contact.html">Contact us</a>
-    </li>
-</ul>
+    <ul class="navbar-nav">
+        <li class="nav-item activeBorderBottom mx-auto">
+            <a class="nav-link text-light " href="index.html">Homepage</a>
+        </li>
+        
+        <li class="nav-item mx-auto">
+            <a class="nav-link disabled" href="#">My profile</a>
+        </li>
+        <li class="nav-item mx-auto">
+            <a class="nav-link text-light" href="contact.html">Contact us</a>
+        </li>
+    </ul>
 
 </div>
 <!-- /navbar items -->
 
 
+
 <!-- search bar -->
 <div class="col-2 mx-auto d-none d-lg-block">
-<div class="input-group">
-    <input type="text" class="form-control" placeholder="Search..">
-    <div class="input-group-append">
-        <button class="btn btn-secondary" type="button">
-            <i class="bi bi-search"></i>
-      </button>
+    <div class="input-group">
+        <input type="text" class="form-control" placeholder="Search..">
+        <div class="input-group-append">
+            <button class="btn btn-secondary" type="button">
+                <i class="bi bi-search"></i>
+          </button>
+        </div>
     </div>
-</div>
 
 </div>
-<div class="col-1 mx-5 d-none d-lg-block">
-<p class="text-light text-center mx-auto my-auto" > <?php echo "Welcome, ". $_SESSION['username']; ?>
+<div class="col-1 mx-auto d-none d-lg-block">
+<p class="text-light text-center mx-auto my-auto" > <?php echo "Hi, ". $_SESSION['username']; ?>
 </div>
 <div class="col-2 mx-auto d-none d-lg-block">
 
@@ -111,6 +116,7 @@ $post = $postDb->getPostByPostId($postId);
 
 </nav>
 <!-- ---------------------- END OF NORMAL HEADER ------------------- -->
+
 
 
 
@@ -168,7 +174,20 @@ class="bi bi-list"></i></span></button>
 
 
 
-<div class="container mx-auto my-4">
+<div class="container d-flex mx-auto my-4">
+
+<div class="d-flex justify-content-start my-4 mx-auto">
+<?php if ($post->get_author() === $_SESSION['id']) {?>
+                <form name="delete" method="" action="postDelete.php">
+                <input id="postId" name="postId" type="hidden" value="<?php echo $post->get_id();?>">
+                <button name="delete"title="Remove" class="btn btn-danger" type="submit">
+                <i class="bi bi-trash">Delete post</i>
+                </button>
+                </form> 
+
+                <?php } ?>
+        </div>
+       
 
         <div class="d-flex justify-content-end my-4 mx-auto">
              <form name="posts" method="POST" action="index.php">
@@ -176,7 +195,8 @@ class="bi bi-list"></i></span></button>
                  <i class="bi bi-arrow-90deg-left"></i> Back to posts
                     </button>
                 </form> 
-        </div>
+        
+</div>
 </div>
 
 <div class="container col-md-8 my-4 border shadow">
@@ -225,11 +245,11 @@ class="bi bi-list"></i></span></button>
 
 
 <div class="col-md-4">
- <p> <?php echo $post->get_date();?></p>
+ <p> Date: <?php echo $post->get_date();?></p>
   </div>
 
   <div class="col-md-4 text-right ">
-    <p> Post kreirao: admin </p>
+    <p> Author: <?php echo $userDb->getUsernameFromUserId($post->get_author())?> </p>
 </div>
 
 

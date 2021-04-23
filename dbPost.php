@@ -8,11 +8,11 @@ require_once 'post.php';
             $dbConn = new dbConnect(); 
         }
 
-        function storePostToDb($title,$content,$date,$imageURL) {
+        function storePostToDb($title,$content,$date,$imageURL,$author) {
 
             $id = $this->generatePostId();
             $dateFormat = date("Y-m-d", strtotime($date));
-            $sql = "INSERT INTO posts VALUES ('".$id."','".$title."','".$content."','".$dateFormat."','".$imageURL."')";
+            $sql = "INSERT INTO posts VALUES ('".$id."','".$title."','".$content."','".$dateFormat."','".$imageURL."','".$author."')";
            
             if($this->connect()->query($sql)) {
                 return true;
@@ -55,9 +55,6 @@ require_once 'post.php';
 
                     $listOfPosts[] = $row;
                 }
-
-
-
             }
         
             return $listOfPosts;
@@ -69,25 +66,6 @@ require_once 'post.php';
             $sql = "SELECT * FROM posts WHERE id='".$postId."'";
 
             $result = $this->connect()->query($sql);
-/*
-            if($result->num_rows > 0) {
-                $postData = $result->fetch_array();
-                $title = $postData['title'];
-                $content = $postData['content'];
-                $date = $postData['date'];
-                $imageURL = $postData['imageURL'];
-                
-                $post = new Post ($postId, $title, $content, $date, $imageURL);
-                return $post;
-            }
-
-            else {
-                return false;
-            }
-
-            */
-
-
 
             if(mysqli_num_rows($result) > 0){ 
 
@@ -98,8 +76,9 @@ require_once 'post.php';
                  $date = $row['date'];
                  $content = $row['content'];
                  $imageURL = $row['imageURL'];
+                 $author = $row['author'];
 
-                 $post = new Post($id,$title,$content,$date,$imageURL);
+                 $post = new Post($id,$title,$content,$date,$imageURL,$author);
                  return $post;
             }
 

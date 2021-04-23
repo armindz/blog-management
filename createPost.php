@@ -3,7 +3,10 @@
 
 
 //start session
-session_start();
+if(!isset($_SESSION)) 
+{ 
+    session_start(); 
+} 
 
 //redirect if logged in
 if(!isset($_SESSION['user'])){
@@ -44,29 +47,27 @@ if(!isset($_SESSION['user'])){
 <nav class="navbar navbar-expand-lg navbar-light float-left ">
 
 <!-- logo brand -->
-<div class="col-3 mx-3 d-none d-lg-block float-end">
-<a class="navbar-brand" href="index.php">
-    <img class="logo" src="img/logo/bmLogo.png">
-</a>
+<div class="col-2 mx-auto d-none d-lg-block  ">
+    <a class="navbar-brand" href="index.php">
+        <img class="logo" src="img/logo/bmLogo.png">
+    </a>
 </div>
 <!-- /logo brand-->
 
 <!-- navbar items -->
 <div class="col-4 mx-auto d-none d-lg-block">
-<ul class="navbar-nav">
-    <li class="nav-item activeBorderBottom mx-auto">
-        <a class="nav-link text-light " href="index.html">Homepage</a>
-    </li>
-    <li class="nav-item mx-auto">
-        <a class="nav-link text-light" href="movies.html">Movies</a>
-    </li>
-    <li class="nav-item mx-auto">
-        <a class="nav-link disabled" href="#">Series</a>
-    </li>
-    <li class="nav-item mx-auto">
-        <a class="nav-link text-light" href="contact.html">Contact us</a>
-    </li>
-</ul>
+    <ul class="navbar-nav">
+        <li class="nav-item activeBorderBottom mx-auto">
+            <a class="nav-link text-light " href="index.html">Homepage</a>
+        </li>
+        
+        <li class="nav-item mx-auto">
+            <a class="nav-link disabled" href="#">My profile</a>
+        </li>
+        <li class="nav-item mx-auto">
+            <a class="nav-link text-light" href="contact.html">Contact us</a>
+        </li>
+    </ul>
 
 </div>
 <!-- /navbar items -->
@@ -74,20 +75,20 @@ if(!isset($_SESSION['user'])){
 
 <!-- search bar -->
 <div class="col-2 mx-auto d-none d-lg-block">
-<div class="input-group">
-    <input type="text" class="form-control" placeholder="Search..">
-    <div class="input-group-append">
-        <button class="btn btn-secondary" type="button">
-            <i class="bi bi-search"></i>
-      </button>
+    <div class="input-group">
+        <input type="text" class="form-control" placeholder="Search..">
+        <div class="input-group-append">
+            <button class="btn btn-secondary" type="button">
+                <i class="bi bi-search"></i>
+          </button>
+        </div>
     </div>
-</div>
 
 </div>
-<div class="col-1 mx-5 d-none d-lg-block">
-<p class="text-light text-center mx-auto my-auto" > <?php echo "Welcome, ". $_SESSION['username']; ?>
+<div class="col-1 mx-auto d-none d-lg-block">
+<p class="text-light text-center mx-auto my-auto" > <?php echo "Hi, ". $_SESSION['username']; ?>
 </div>
-<div class="col-2 mx-auto d-none d-lg-block">
+<div class="col-1 mx-auto d-none d-lg-block">
 
 <form name="logout" method="post" action="logoutService.php">
 <button class="btn btn-primary" name="logout" alt="Log out" type="submit">
@@ -103,13 +104,14 @@ if(!isset($_SESSION['user'])){
 
 
 
+
 <!-- ---------------------- SMALL HEADER ------------------- -->
 <nav class="navbar navbar-light float-left ">
 
 <!-- navbar brand -->
-<div class="col-11 d-block d-lg-none">
+<div class="col-11  d-block d-lg-none">
 
-<a href="" class="navbar-brand mx-auto "><img id="logoSmall" src="img/logo/bmicon.png"></a>
+<a href="index.php" class="navbar-brand mx-auto "><img id="logoSmall" src="img/logo/bmicon.png"></a>
 
 <!-- /navbar brand -->
 
@@ -220,6 +222,7 @@ class="bi bi-list"></i></span></button>
 
 
 <div class="col-md-8 d-flex justify-content-center my-4 mx-auto">
+<input type="hidden" name="author" value="<?php echo $_SESSION['id']; ?>">
   <button type="submit" name="createPost" class="btn btn-primary">Create post</button>
   </div>
 

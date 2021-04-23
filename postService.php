@@ -9,11 +9,12 @@ $title = $_POST['title'];
 $date = $_POST['date'];
 $content = $_POST['content'];
 $imageURL =$_POST['imageURL'];
+$author = $_POST['author'];
 
 
 
-if ($postDb->storePostToDb($title, $content, $date, $imageURL)) {
-    echo "Success";
+if ($postDb->storePostToDb($title, $content, $date, $imageURL,$author)) {
+    header('location:index.php');
 }
 
 else {

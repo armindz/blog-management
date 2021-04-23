@@ -2,7 +2,12 @@
 
 require_once 'dbConnect.php';
 require_once 'user.php';
-session_start();
+
+if(!isset($_SESSION)) 
+{ 
+    session_start(); 
+} 
+
 
     class dbUser extends dbConnect {
 
@@ -84,6 +89,22 @@ session_start();
 
             else {
                 return false;
+            }
+        }
+
+        public function getUsernameFromUserId($userId) {
+
+            $sql = "SELECT * FROM users WHERE id='".$userId."'";
+            $result = $this->connect()->query($sql);
+
+            if($result->num_rows > 0) {
+
+                while ($row = mysqli_fetch_array($result)) {
+
+                    $username = $row['username'];
+                    return $username;
+                    
+                }
             }
         }
 

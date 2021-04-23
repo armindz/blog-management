@@ -1,17 +1,20 @@
 
 <?php
     require_once 'dbPost.php';
-   
+    require_once 'dbUser.php';
 
    
 	//start session
-	session_start();
+    if(!isset($_SESSION)) 
+    { 
+        session_start(); 
+    } 
  
 	//redirect if logged in
 	if(!isset($_SESSION['user'])){
 		header('location:login.php');
 	}
-
+   
     
 ?>
 
@@ -46,9 +49,9 @@
  <nav class="navbar navbar-expand-lg navbar-light float-left ">
 
 <!-- logo brand -->
-<div class="col-3 mx-3 d-none d-lg-block float-end">
+<div class="col-3 mx-auto d-none d-lg-block float-end">
     <a class="navbar-brand">
-        <img class="logo" src="img/logo/bmLogo.png">
+        <img class="logo" href="index.php" src="img/logo/bmLogo.png">
     </a>
 </div>
 <!-- /logo brand-->
@@ -59,11 +62,9 @@
         <li class="nav-item activeBorderBottom mx-auto">
             <a class="nav-link text-light " href="index.html">Homepage</a>
         </li>
+        
         <li class="nav-item mx-auto">
-            <a class="nav-link text-light" href="movies.html">Movies</a>
-        </li>
-        <li class="nav-item mx-auto">
-            <a class="nav-link disabled" href="#">Series</a>
+            <a class="nav-link disabled" href="#">My profile</a>
         </li>
         <li class="nav-item mx-auto">
             <a class="nav-link text-light" href="contact.html">Contact us</a>
@@ -72,6 +73,7 @@
 
 </div>
 <!-- /navbar items -->
+
 
 
 <!-- search bar -->
@@ -86,8 +88,8 @@
     </div>
 
 </div>
-<div class="col-1 mx-5 d-none d-lg-block">
-<p class="text-light text-center mx-auto my-auto" > <?php echo "Welcome, ". $_SESSION['username']; ?>
+<div class="col-1 mx-auto d-none d-lg-block">
+<p class="text-light text-center mx-auto my-auto" > <?php echo "Hi, ". $_SESSION['username']; ?>
 </div>
 <div class="col-2 mx-auto d-none d-lg-block">
 
@@ -129,12 +131,7 @@ class="bi bi-list"></i></span></button>
             <li class="nav-item activeBorderBottom">
                 <a class="nav-link text-light" href="index.html">Home</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link text-light" href="movies.html">Movies</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-light" href="contact.html">Contact us</a>
-            </li>
+         
 
             <li>
                 <form name="logout" method="post" action="logoutService.php">
@@ -178,7 +175,7 @@ class="bi bi-list"></i></span></button>
 <?php 
     $postDb = new dbPost();
     $listOfPosts = $postDb->getAllPosts();
-
+    $userDb = new dbUser();
 ?>
     
     <div class="container col-md-8">
@@ -189,7 +186,7 @@ class="bi bi-list"></i></span></button>
                     
                     <th class="col-6" scope="col">TITLE</th>
                      <th class="col-3"scope="col">DATE</th>
-                     <th class="col-1" scope="col">AUTOR</th>
+                     <th class="col-1" scope="col">AUTHOR</th>
                      <th class="col-2" scope="col">ACTIONS</th>
                  </tr>
             </thead>
@@ -200,25 +197,30 @@ class="bi bi-list"></i></span></button>
               
                 <td> <?php echo $post['title'];?> </td>
                 <td> <?php echo $post['date']; ?> </td>
-                <th scope="row">> </th>
+                <th scope="row"><?php echo $userDb->getUsernameFromUserId($post['author']); ?></th>
                 <td> 
 
-                
-                <form name="delete" method="POST" action="postDelete.php">
-                <input id="postId" name="postId" type="hidden" value="<?php echo $post['id']?>">
-                <button name="delete" class="btn" type="submit">
-                <i class="bi bi-trash text-danger"></i>
-                </button>
-                </form> 
-                
+                <div class="container d-flex ">
+
+
                 <form name="view" method="POST" action="postPreview.php">
                 <input id="postId" name="postId" type="hidden" value="<?php echo $post['id']?>">
-                <button name="view" class="btn" type="submit">
+                <button name="view" class="btn" title="View post" type="submit">
                 <i class="bi bi-box-arrow-in-right "></i>
                 </button>
                 </form> 
+
+                <?php if($post['author'] === $_SESSION['id']) {?>
+                <form name="delete" method="POST" action="postDelete.php">
+                <input id="postId" name="postId" type="hidden" value="<?php echo $post['id']?>">
+                <button name="delete"title="Remove" class="btn" type="submit">
+                <i class="bi bi-trash text-danger"></i>
+                </button>
+                </form> 
+                <?php } ?>
+              
                 
-                
+                </div>
                 </td>
 </tr>
 <?php
