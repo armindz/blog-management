@@ -55,17 +55,14 @@ if(!isset($_SESSION['user'])){
 <!-- /logo brand-->
 
 <!-- navbar items -->
-<div class="col-4 mx-auto d-none d-lg-block">
-    <ul class="navbar-nav">
-        <li class="nav-item activeBorderBottom mx-auto">
+<div class="col-4 mx-auto d-none d-lg-block ">
+    <ul class="navbar-nav float-end">
+        <li class="nav-item activeBorderBottom mx-3">
             <a class="nav-link text-light " href="index.html">Homepage</a>
         </li>
         
-        <li class="nav-item mx-auto">
+        <li class="nav-item mx-4">
             <a class="nav-link disabled" href="#">My profile</a>
-        </li>
-        <li class="nav-item mx-auto">
-            <a class="nav-link text-light" href="contact.html">Contact us</a>
         </li>
     </ul>
 
@@ -88,11 +85,11 @@ if(!isset($_SESSION['user'])){
 <div class="col-1 mx-auto d-none d-lg-block">
 <p class="text-light text-center mx-auto my-auto" > <?php echo "Hi, ". $_SESSION['username']; ?>
 </div>
-<div class="col-1 mx-auto d-none d-lg-block">
+<div class="col-2 mx-auto d-none d-lg-block">
 
 <form name="logout" method="post" action="logoutService.php">
 <button class="btn btn-primary" name="logout" alt="Log out" type="submit">
-<i class="bi bi-box-arrow-right"></i>
+<i class="bi bi-box-arrow-right">Log out</i>
 </button>
 </form>
 
@@ -195,9 +192,10 @@ class="bi bi-list"></i></span></button>
 
 <div class="col-md-4">
   <label for="date" class="form-label">Date</label>
-  <input type="date" class="form-control" name="date" id="postDate">
+  <input type="hidden" class="form-control" name="date" id="postDate" value="<?php echo $date = date('Y-m-d');?>">
+  <p><?php echo $date?></p>
   </div>
-
+  
   <div class="col-md-4 ">
   <label for="image" class="form-label">Image</label>
   <input type="text" class="form-control" name="imageURL" id="postImage">
@@ -249,7 +247,6 @@ class="bi bi-list"></i></span></button>
 <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
 <a class="text-dark mx-3" href="index.php">Homepage</a>
 <a class="text-dark mx-3" href="#">About us</a>
-<a class="text-dark mx-3" href="contact.php">Contact us</a>
 </br>
 </br>
 © 2021 Copyright:

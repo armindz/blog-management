@@ -10,11 +10,12 @@
         session_start(); 
     } 
  
+    $isLoggedIn = isset($_SESSION['user']);
 	//redirect if logged in
-	if(!isset($_SESSION['user'])){
+/*	if(!isset($_SESSION['user'])){
 		header('location:login.php');
 	}
-   
+   */
     
 ?>
 
@@ -49,7 +50,7 @@
  <nav class="navbar navbar-expand-lg navbar-light float-left ">
 
 <!-- logo brand -->
-<div class="col-3 mx-auto d-none d-lg-block float-end">
+<div class="col-2 mx-auto d-none d-lg-block float-end">
     <a class="navbar-brand">
         <img class="logo" href="index.php" src="img/logo/bmLogo.png">
     </a>
@@ -58,17 +59,15 @@
 
 <!-- navbar items -->
 <div class="col-4 mx-auto d-none d-lg-block">
-    <ul class="navbar-nav">
-        <li class="nav-item activeBorderBottom mx-auto">
+    <ul class="navbar-nav float-end">
+        <li class="nav-item activeBorderBottom mx-3">
             <a class="nav-link text-light " href="index.html">Homepage</a>
         </li>
         
-        <li class="nav-item mx-auto">
+        <li class="nav-item mx-4">
             <a class="nav-link disabled" href="#">My profile</a>
         </li>
-        <li class="nav-item mx-auto">
-            <a class="nav-link text-light" href="contact.html">Contact us</a>
-        </li>
+      
     </ul>
 
 </div>
@@ -89,15 +88,22 @@
 
 </div>
 <div class="col-1 mx-auto d-none d-lg-block">
+<?php if($isLoggedIn){?>
 <p class="text-light text-center mx-auto my-auto" > <?php echo "Hi, ". $_SESSION['username']; ?>
+<?php } ?>
 </div>
-<div class="col-2 mx-auto d-none d-lg-block">
 
+<div class="col-2 mx-auto d-none d-lg-block">
+<?php if($isLoggedIn) { ?>
 <form name="logout" method="post" action="logoutService.php">
 <button class="btn btn-primary" name="logout" alt="Log out" type="submit">
-<i class="bi bi-box-arrow-right"></i>
+<i class="bi bi-box-arrow-right">Log out</i>
 </button>
 </form>
+<?php } else { ?>
+    <a href="login.php" class="btn btn-primary">
+<i class="bi bi-box-arrow-in-right"> Log in</i></a>
+<?php } ?>
 
 </div>
 <!-- /search bar -->
@@ -134,11 +140,17 @@ class="bi bi-list"></i></span></button>
          
 
             <li>
+            <?php if($isLoggedIn) { ?>
                 <form name="logout" method="post" action="logoutService.php">
                     <button class="btn btn-primary" name="logout" alt="Log out" type="submit">
                         <i class="bi bi-box-arrow-right"> Log out</i>
                     </button>
                 </form>
+                <?php } else {?>
+                    <a href="login.php" class="btn btn-primary">
+                    <i class="bi bi-box-arrow-in-right"> Log in</i></a>
+                    <?php } ?>
+                
             </li>
         </ul>
         <!-- /navbar items -->
@@ -200,8 +212,7 @@ class="bi bi-list"></i></span></button>
                 <th scope="row"><?php echo $userDb->getUsernameFromUserId($post['author']); ?></th>
                 <td> 
 
-                <div class="container d-flex ">
-
+                <div class="container d-flex my-auto mx-auto">
 
                 <form name="view" method="POST" action="postPreview.php">
                 <input id="postId" name="postId" type="hidden" value="<?php echo $post['id']?>">
@@ -210,7 +221,7 @@ class="bi bi-list"></i></span></button>
                 </button>
                 </form> 
 
-                <?php if($post['author'] === $_SESSION['id']) {?>
+                <?php if($isLoggedIn && $post['author'] === $_SESSION['id']){?>
                 <form name="delete" method="POST" action="postDelete.php">
                 <input id="postId" name="postId" type="hidden" value="<?php echo $post['id']?>">
                 <button name="delete"title="Remove" class="btn" type="submit">
@@ -247,7 +258,6 @@ class="bi bi-list"></i></span></button>
 <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
     <a class="text-dark mx-3" href="index.php">Homepage</a>
     <a class="text-dark mx-3" href="#">About us</a>
-    <a class="text-dark mx-3" href="contact.php">Contact us</a>
     </br>
     </br>
     © 2021 Copyright:

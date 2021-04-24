@@ -10654,5 +10654,9 @@ fieldset:disabled .btn {
     cursor: pointer;
 }
 
+.activeBorderBottom {
+    border-bottom: 2px rgb(214, 214, 214) solid;
+}
+
 
 /*# sourceMappingURL=bootstrap.css.map */

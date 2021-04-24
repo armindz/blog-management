@@ -13,18 +13,19 @@ if(!isset($_SESSION))
     session_start(); 
 } 
 
+/*
 //redirect if logged in
 if(!isset($_SESSION['user'])){
     header('location:login.php');
 }
-
+*/
 
 $postId = $_POST['postId'];
 
 $postDb = new dbPost();
 
 $post = $postDb->getPostByPostId($postId);
-
+$isLoggedIn = isset($_SESSION['user']);
 
 $userDb = new dbUser();
 
@@ -57,30 +58,28 @@ $userDb = new dbUser();
 
 <header>
 
-<!-- ---------------------- NORMAL HEADER ------------------- -->
-<nav class="navbar navbar-expand-lg navbar-light float-left ">
+ <!-- ---------------------- NORMAL HEADER ------------------- -->
+ <nav class="navbar navbar-expand-lg navbar-light float-left ">
 
 <!-- logo brand -->
-<div class="col-3 mx-auto d-none d-lg-block float-end">
-    <a class="navbar-brand" href="index.php">
-        <img class="logo" src="img/logo/bmLogo.png">
+<div class="col-2 mx-auto d-none d-lg-block float-end">
+    <a class="navbar-brand">
+        <img class="logo" href="index.php" src="img/logo/bmLogo.png">
     </a>
 </div>
 <!-- /logo brand-->
 
 <!-- navbar items -->
 <div class="col-4 mx-auto d-none d-lg-block">
-    <ul class="navbar-nav">
-        <li class="nav-item activeBorderBottom mx-auto">
+    <ul class="navbar-nav float-end">
+        <li class="nav-item activeBorderBottom mx-3">
             <a class="nav-link text-light " href="index.html">Homepage</a>
         </li>
         
-        <li class="nav-item mx-auto">
+        <li class="nav-item mx-4">
             <a class="nav-link disabled" href="#">My profile</a>
         </li>
-        <li class="nav-item mx-auto">
-            <a class="nav-link text-light" href="contact.html">Contact us</a>
-        </li>
+      
     </ul>
 
 </div>
@@ -101,15 +100,22 @@ $userDb = new dbUser();
 
 </div>
 <div class="col-1 mx-auto d-none d-lg-block">
+<?php if($isLoggedIn){?>
 <p class="text-light text-center mx-auto my-auto" > <?php echo "Hi, ". $_SESSION['username']; ?>
+<?php } ?>
 </div>
-<div class="col-2 mx-auto d-none d-lg-block">
 
+<div class="col-2 mx-auto d-none d-lg-block">
+<?php if($isLoggedIn) { ?>
 <form name="logout" method="post" action="logoutService.php">
 <button class="btn btn-primary" name="logout" alt="Log out" type="submit">
-<i class="bi bi-box-arrow-right"></i>
+<i class="bi bi-box-arrow-right">Log out</i>
 </button>
 </form>
+<?php } else { ?>
+    <a href="login.php" class="btn btn-primary">
+<i class="bi bi-box-arrow-in-right"> Log in</i></a>
+<?php } ?>
 
 </div>
 <!-- /search bar -->
@@ -119,48 +125,48 @@ $userDb = new dbUser();
 
 
 
-
 <!-- ---------------------- SMALL HEADER ------------------- -->
 <nav class="navbar navbar-light float-left ">
 
 <!-- navbar brand -->
 <div class="col-11 d-block d-lg-none">
 
-<a href="" class="navbar-brand mx-auto "><img id="logoSmall" src="img/logo/bmicon.png"></a>
+    <a href="" class="navbar-brand mx-auto "><img id="logoSmall" src="img/logo/bmicon.png"></a>
 
-<!-- /navbar brand -->
+    <!-- /navbar brand -->
 
 
-<!-- collapse button -->
-<button class="navbar-toggler toggler-example text-light float-end" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation"><span class="dark-blue-text"><i
+    <!-- collapse button -->
+    <button class="navbar-toggler toggler-example text-light float-end" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation"><span class="dark-blue-text"><i
 class="bi bi-list"></i></span></button>
-<!-- /collapse button -->
+    <!-- /collapse button -->
 
-<!-- collapsible content -->
-<div class="collapse navbar-collapse text-center" id="navbarSupportedContent1">
+    <!-- collapsible content -->
+    <div class="collapse navbar-collapse text-center" id="navbarSupportedContent1">
 
-    <!-- navbar items -->
-    <ul class="navbar-nav mr-auto ">
-        <li class="nav-item activeBorderBottom">
-            <a class="nav-link text-light" href="index.html">Home</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-light" href="movies.html">Movies</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-light" href="contact.html">Contact us</a>
-        </li>
+        <!-- navbar items -->
+        <ul class="navbar-nav mr-auto ">
+            <li class="nav-item activeBorderBottom">
+                <a class="nav-link text-light" href="index.html">Home</a>
+            </li>
+         
 
-        <li>
-            <form name="logout" method="post" action="logoutService.php">
-                <button class="btn btn-primary" name="logout" alt="Log out" type="submit">
-                    <i class="bi bi-box-arrow-right"> Log out</i>
-                </button>
-            </form>
-        </li>
-    </ul>
-    <!-- /navbar items -->
-</div>
+            <li>
+            <?php if($isLoggedIn) { ?>
+                <form name="logout" method="post" action="logoutService.php">
+                    <button class="btn btn-primary" name="logout" alt="Log out" type="submit">
+                        <i class="bi bi-box-arrow-right"> Log out</i>
+                    </button>
+                </form>
+                <?php } else {?>
+                    <a href="login.php" class="btn btn-primary">
+                    <i class="bi bi-box-arrow-in-right"> Log in</i></a>
+                    <?php } ?>
+                
+            </li>
+        </ul>
+        <!-- /navbar items -->
+    </div>
 </div>
 <!-- /collapsible content -->
 
@@ -177,7 +183,8 @@ class="bi bi-list"></i></span></button>
 <div class="container d-flex mx-auto my-4">
 
 <div class="d-flex justify-content-start my-4 mx-auto">
-<?php if ($post->get_author() === $_SESSION['id']) {?>
+
+<?php if ($isLoggedIn && $post->get_author() === $_SESSION['id']) {?>
                 <form name="delete" method="" action="postDelete.php">
                 <input id="postId" name="postId" type="hidden" value="<?php echo $post->get_id();?>">
                 <button name="delete"title="Remove" class="btn btn-danger" type="submit">
@@ -274,7 +281,6 @@ class="bi bi-list"></i></span></button>
 <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
 <a class="text-dark mx-3" href="index.php">Homepage</a>
 <a class="text-dark mx-3" href="#">About us</a>
-<a class="text-dark mx-3" href="contact.php">Contact us</a>
 </br>
 </br>
 © 2021 Copyright:
