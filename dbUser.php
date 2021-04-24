@@ -17,6 +17,7 @@ if(!isset($_SESSION))
         }
         
         public function storeUser($username, $password, $id) {
+    
             $sql = "INSERT INTO users VALUES ('".$username."','".$password."' ,'".$id."')";
             $query = $this->connect()->query($sql);
 
@@ -28,9 +29,9 @@ if(!isset($_SESSION))
             $username = $user->get_username();
             $password = $user->get_password();
             $id = $user->get_id();
-
+            
             if($this->isUsernameUnique($username)){
-                $sql = "INSERT INTO users VALUES ('".$username."','".$password."' , '".$id."')";
+                $sql = "INSERT INTO users VALUES ('".$username."', MD5('".$password."') ,'".$id."')";
                 $query = $this->connect()->query($sql);
                 return $query;
 
@@ -49,8 +50,6 @@ if(!isset($_SESSION))
             else {
                 return false;
             }
-            
-
         }
 
         public function getAllUsers() {
@@ -73,7 +72,7 @@ if(!isset($_SESSION))
         public function login($username, $password) {
 
            
-            $sql = "SELECT * FROM users WHERE username = '".$username."' AND password = '".$password."'";
+            $sql = "SELECT * FROM users WHERE username = '".$username."' AND password = MD5('".$password."')";
             $result = $this->connect()->query($sql);  
             
             $numOfRows = $result->num_rows;

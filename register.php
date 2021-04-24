@@ -2,14 +2,16 @@
 include_once('dbUser.php');
 
 $userDb = new dbUser();
-$username = $_POST['username'];
-$password = $_POST['password'];
-$user = new User($username, $password, $userDb->generateUserId());
+
 
 
 if(isset($_POST['register'])){
+    
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $user = new User($username, $password, $userDb->generateUserId());
 if($userDb->storeUserToDatabase($user)) {
-
+   
     echo "Registered successfully";
     header('location:login.php');
     
@@ -57,7 +59,7 @@ else {
 
 <!-- logo brand -->
 <div class="col-10 mx-auto d-none d-lg-block float-end">
-    <a class="navbar-brand">
+    <a class="navbar-brand" href="index.php">
         <img class="logo" src="img/logo/bmLogo.png">
     </a>
 </div>
