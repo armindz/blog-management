@@ -10,7 +10,7 @@ if(!isset($_SESSION))
 
 //redirect if logged in
 if(!isset($_SESSION['user'])){
-    header('location:userservice/login.php');
+    header('location:../userservice/login.php');
 }
 
 
