@@ -16,7 +16,7 @@ $isLoggedIn = isset($_SESSION['user']);
 
 <head>
     <meta charset="utf-8">
-    <title>Home - Blog Management</title>
+    <title>Contact us - Blog Management</title>
     <link rel="icon" href="img/logo/bmicon.png">
     <link rel="stylesheet" href="css/bootstrap.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -48,7 +48,7 @@ $isLoggedIn = isset($_SESSION['user']);
             <div class="col-4 mx-auto d-none d-lg-block">
                 <ul class="navbar-nav float-end">
 
-                    <li class="nav-item activeBorderBottom mx-3">
+                    <li class="nav-item mx-3">
                         <a class="nav-link text-light " href="index.php">Homepage</a>
                     </li>
                     <?php if ($isLoggedIn) { ?>
@@ -120,7 +120,7 @@ $isLoggedIn = isset($_SESSION['user']);
 
                     <!-- navbar items -->
                     <ul class="navbar-nav mr-auto ">
-                        <li class="nav-item activeBorderBottom">
+                        <li class="nav-item">
                             <a class="nav-link text-light" href="index.php">Home</a>
                         </li>
                         <?php if ($isLoggedIn) { ?>
@@ -154,88 +154,69 @@ $isLoggedIn = isset($_SESSION['user']);
     </header>
 
 
-    <!-- ------------------------- HOMEPAGE BODY ------------------------------ -->
+    <!-- ------------------------- CONTACT FORM BODY ------------------------------ -->
 
     <div class="container mx-auto my-4">
-        <!-- header -->
-        <div class="d-flex justify-content-center">
-            <h3> Blog posts list </h3>
-        </div>
-        <!-- /header -->
 
-        <!-- new post button -->
+        <div class="text-center">
+            <h3> Contact us </h3>
+        </div>
+        <!-- back to posts -->
         <div class="d-flex justify-content-end my-4 mx-auto">
-            <form name="newPost" method="POST" action="postservice/createPost.php">
-                <button name="create_post" type="submit" class="btn btn-secondary">
-                    <i class="bi bi-pencil-square"></i> New post
+            <form name="posts" method="POST" action="index.php">
+                <button name="posts" type="submit" class="btn btn-secondary">
+                    <i class="bi bi-arrow-90deg-left"></i> Back to posts
                 </button>
             </form>
         </div>
-        <!-- /new post button -->
+        <!-- /back to posts -->
     </div>
 
+    <div class="container col-md-8 my-4 border shadow">
+        <div class="container col-md-7">
+            <h5 class="text-center my-3">We'd love to hear from you</h5>
+            <p class="text-center my-3">Whether you have a question about features, trials, pricing or anything else, our team is ready to answer all your questions</p>
+        </div>
 
-    <!-- php code to be used in table -->
-    <?php
-    $postDb = new dbPost();
-    $listOfPosts = $postDb->getAllPosts();
-    $userDb = new dbUser();
-    ?>
-    <!-- /php code to be used in table -->
+        <form name="createPost" action="armindzibric6@gmail.com" method="GET">
 
-    <div class="container col-md-8">
-        <!-- blog list table -->
-        <table class="table border shadow">
-            <thead>
-                <tr>
+            <div class="row d-flex justify-content-center mx-auto my-4">
 
-                    <th class="col-6" scope="col">TITLE</th>
-                    <th class="col-3" scope="col">DATE</th>
-                    <th class="col-1" scope="col">AUTHOR</th>
-                    <th class="col-2" scope="col">ACTIONS</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                foreach ($listOfPosts as $post) {
-                ?> <tr>
+                <!-- first name form -->
+                <div class="col-md-4">
+                    <label for="firstname" class="form-label">First name:</label>
+                    <input type="text" class="form-control" name="firstname" id="firstname">
 
-                        <td> <?php echo $post['title']; ?> </td>
-                        <td> <?php echo $post['date']; ?> </td>
-                        <th scope="row"><?php echo $userDb->getUsernameFromUserId($post['author']); ?></th>
-                        <td>
+                </div>
+                <!-- /first name form -->
+                <!-- last name form -->
+                <div class="col-md-4 ">
+                    <label for="lastname" class="form-label">Last name:</label>
+                    <input type="text" class="form-control" name="lastname" id="lastname">
+                </div>
+                <!-- /last name form -->
+            </div>
+            <!-- message form -->
+            <div class="row d-flex justify-content-center mx-auto my-4">
+                <div class="col-md-8">
+                    <label for="message" class="form-label">Message</label>
+                    <textarea class="form-control" name="message" id="message"></textarea>
+                </div>
+            </div>
+            <!-- /message form -->
 
-                            <div class="container d-flex my-auto mx-auto">
+            <!-- form button -->
+            <div class="row d-flex justify-content-center mx-auto my-4">
+                <div class="col-md-8 d-flex justify-content-center my-4 mx-auto">
+                    <button type="submit" name="contactSubmit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+            <!-- /form button -->
 
-                                <form name="view" method="POST" action="postservice/postPreview.php">
-                                    <input id="postId" name="postId" type="hidden" value="<?php echo $post['id'] ?>">
-                                    <button name="view" class="btn" title="View post" type="submit">
-                                        <i class="bi bi-box-arrow-in-right "></i>
-                                    </button>
-                                </form>
-
-                                <?php if ($isLoggedIn && $post['author'] === $_SESSION['id']) { ?>
-                                    <form name="delete" method="POST" action="postservice/postDelete.php">
-                                        <input id="postId" name="postId" type="hidden" value="<?php echo $post['id'] ?>">
-                                        <button name="delete" title="Remove" class="btn" type="submit">
-                                            <i class="bi bi-trash text-danger"></i>
-                                        </button>
-                                    </form>
-                                <?php } ?>
-
-
-                            </div>
-                        </td>
-                    </tr>
-                <?php
-                }
-                ?>
-
-            </tbody>
-        </table>
-        <!-- /blog list table -->
+        </form>
     </div>
-    <!-- ---------------------- END OF HOMEPAGE BODY ------------------- -->
+
+    <!-- ---------------------- END OF CONTACT FORM BODY ------------------- -->
 
 
     <!-- -----------------------   FOOTER ----------------------- -->
