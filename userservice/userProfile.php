@@ -90,13 +90,13 @@ if (!$isLoggedIn) {
             <!-- login & logout button -->
             <div class="col-2 mx-auto d-none d-lg-block">
                 <?php if ($isLoggedIn) { ?>
-                    <form name="logout" method="post" action="userservice/logoutService.php">
+                    <form name="logout" method="post" action="../userservice/logoutService.php">
                         <button class="btn btn-primary" name="logout" alt="Log out" type="submit">
                             <i class="bi bi-box-arrow-right">Log out</i>
                         </button>
                     </form>
                 <?php } else { ?>
-                    <a href="userservice/login.php" class="btn btn-primary">
+                    <a href="../userservice/login.php" class="btn btn-primary">
                         <i class="bi bi-box-arrow-in-right"> Log in</i></a>
                 <?php } ?>
 
@@ -135,13 +135,13 @@ if (!$isLoggedIn) {
                         <!-- login & logout button -->
                         <li>
                             <?php if ($isLoggedIn) { ?>
-                                <form name="logout" method="post" action="logoutService.php">
+                                <form name="logout" method="post" action="../userservice/logoutService.php">
                                     <button class="btn btn-primary" name="logout" alt="Log out" type="submit">
                                         <i class="bi bi-box-arrow-right"> Log out</i>
                                     </button>
                                 </form>
                             <?php } else { ?>
-                                <a href="login.php" class="btn btn-primary">
+                                <a href="../userservice/login.php" class="btn btn-primary">
                                     <i class="bi bi-box-arrow-in-right"> Log in</i></a>
                             <?php } ?>
 

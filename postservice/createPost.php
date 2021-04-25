@@ -8,6 +8,7 @@ if (!isset($_SESSION)) {
 if (!isset($_SESSION['user'])) {
     header('location:../userservice/login.php');
 }
+date_default_timezone_set("Europe/Sarajevo");
 ?>
 
 <!DOCTYPE html>
