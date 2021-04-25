@@ -1,7 +1,7 @@
 <?php 
+require_once __DIR__ . "/dbConnect.php";
+require_once __DIR__ . "/../models/user.php";
 
-require_once 'dbConnect.php';
-require_once 'user.php';
 
 if(!isset($_SESSION)) 
 { 

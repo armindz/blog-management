@@ -4,8 +4,8 @@
 <head>
     <meta charset="utf-8">
     <title>Login - Blog Management</title>
-    <link rel="icon" href="img/logo/bmicon.png">
-    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="icon" href="../img/logo/bmicon.png">
+    <link rel="stylesheet" href="../css/bootstrap.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script rel="text/javascript" src="js/bootstrap.min.js"></script>
@@ -27,8 +27,8 @@
 
 <!-- logo brand -->
 <div class="col-10 mx-auto d-none d-lg-block float-end">
-    <a class="navbar-brand" href="index.php">
-        <img class="logo"  src="img/logo/bmLogo.png">
+    <a class="navbar-brand" href="../index.php">
+        <img class="logo"  src="../img/logo/bmLogo.png">
     </a>
 </div>
 <!-- /logo brand-->
@@ -44,7 +44,7 @@
 
 <!-- navbar brand -->
 <div class="col-11 d-block d-lg-none">
-    <a href="" class="navbar-brand mx-auto "><img id="logoSmall" src="img/logo/bmicon.png"></a>
+    <a href="" class="navbar-brand mx-auto "><img id="logoSmall" src="../img/logo/bmicon.png"></a>
 
     <!-- /navbar brand -->
 </div>
@@ -79,20 +79,14 @@
    
         </div>
   </div>
-      <!-- ----------------------------- /LOGIN FORM ---------------------------- -->
-
-
-
-
-
-
-
-
-
 
     <!-- -------------------------- END OF LOGIN FORM ------------------------ -->
 
- <!-- -----------------------   FOOTER ----------------------- -->
+ 
+ 
+ 
+ 
+    <!-- -----------------------   FOOTER ----------------------- -->
  <footer class="bg-light text-center text-lg-start">
 
 <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">

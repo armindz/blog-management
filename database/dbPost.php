@@ -1,6 +1,7 @@
 <?php 
-require_once 'dbConnect.php';
-require_once 'post.php';
+require_once __DIR__ . "/dbConnect.php";
+require_once __DIR__ . "/../models/post.php";
+
     class dbPost extends dbConnect {
         
         function __construct()

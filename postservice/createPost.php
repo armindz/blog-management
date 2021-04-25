@@ -10,7 +10,7 @@ if(!isset($_SESSION))
 
 //redirect if logged in
 if(!isset($_SESSION['user'])){
-    header('location:login.php');
+    header('location:userservice/login.php');
 }
 
 
@@ -25,8 +25,8 @@ if(!isset($_SESSION['user'])){
 <head>
 <meta charset="utf-8">
 <title>Create post - Blog Management</title>
-<link rel="icon" href="img/logo/bmicon.png">
-<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="icon" href="../img/logo/bmicon.png">
+<link rel="stylesheet" href="../css/bootstrap.css">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet">
 <script rel="text/javascript" src="js/bootstrap.min.js"></script>
@@ -49,7 +49,7 @@ if(!isset($_SESSION['user'])){
 <!-- logo brand -->
 <div class="col-2 mx-auto d-none d-lg-block  ">
     <a class="navbar-brand" href="index.php">
-        <img class="logo" src="img/logo/bmLogo.png">
+        <img class="logo" src="../img/logo/bmLogo.png">
     </a>
 </div>
 <!-- /logo brand-->
@@ -58,7 +58,7 @@ if(!isset($_SESSION['user'])){
 <div class="col-4 mx-auto d-none d-lg-block ">
     <ul class="navbar-nav float-end">
         <li class="nav-item activeBorderBottom mx-3">
-            <a class="nav-link text-light " href="index.html">Homepage</a>
+            <a class="nav-link text-light " href="../index.php">Homepage</a>
         </li>
         
         <li class="nav-item mx-4">
@@ -87,7 +87,7 @@ if(!isset($_SESSION['user'])){
 </div>
 <div class="col-2 mx-auto d-none d-lg-block">
 
-<form name="logout" method="post" action="logoutService.php">
+<form name="logout" method="post" action="userservice/logoutService.php">
 <button class="btn btn-primary" name="logout" alt="Log out" type="submit">
 <i class="bi bi-box-arrow-right">Log out</i>
 </button>
@@ -108,7 +108,7 @@ if(!isset($_SESSION['user'])){
 <!-- navbar brand -->
 <div class="col-11  d-block d-lg-none">
 
-<a href="index.php" class="navbar-brand mx-auto "><img id="logoSmall" src="img/logo/bmicon.png"></a>
+<a href="index.php" class="navbar-brand mx-auto "><img id="logoSmall" src="../img/logo/bmicon.png"></a>
 
 <!-- /navbar brand -->
 
@@ -124,17 +124,15 @@ class="bi bi-list"></i></span></button>
     <!-- navbar items -->
     <ul class="navbar-nav mr-auto ">
         <li class="nav-item activeBorderBottom">
-            <a class="nav-link text-light" href="index.html">Home</a>
+            <a class="nav-link text-light" href="../index.php">Home</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-light" href="movies.html">Movies</a>
+            <a class="nav-link text-light" href="#">My profile</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link text-light" href="contact.html">Contact us</a>
-        </li>
+     
 
         <li>
-            <form name="logout" method="post" action="logoutService.php">
+            <form name="logout" method="post" action="userservice/logoutService.php">
                 <button class="btn btn-primary" name="logout" alt="Log out" type="submit">
                     <i class="bi bi-box-arrow-right"> Log out</i>
                 </button>
@@ -165,7 +163,7 @@ class="bi bi-list"></i></span></button>
 
 
         <div class="d-flex justify-content-end my-4 mx-auto">
-             <form name="posts" method="POST" action="index.php">
+             <form name="posts" method="POST" action="../index.php">
                  <button name="posts" type="submit" class="btn btn-secondary">
                  <i class="bi bi-arrow-90deg-left"></i> Back to posts
                     </button>
@@ -175,7 +173,7 @@ class="bi bi-list"></i></span></button>
 
 <div class="container col-md-8 my-4 border shadow">
 
-  <form name="createPost" method="POST" action="postService.php"> 
+  <form name="createPost" method="POST" action="postservice/postService.php"> 
 
 <div class="row d-flex justify-content-center mx-auto my-4">
 

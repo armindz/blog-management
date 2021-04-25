@@ -1,9 +1,7 @@
 
 <?php
-    require_once 'dbPost.php';
-    require_once 'dbUser.php';
-
-   
+  require_once __DIR__ . "/database/dbPost.php";
+  require_once __DIR__ . "/database/dbUser.php";
 	//start session
     if(!isset($_SESSION)) 
     { 
@@ -11,12 +9,7 @@
     } 
  
     $isLoggedIn = isset($_SESSION['user']);
-	//redirect if logged in
-/*	if(!isset($_SESSION['user'])){
-		header('location:login.php');
-	}
-   */
-    
+ 
 ?>
 
 
@@ -61,7 +54,7 @@
 <div class="col-4 mx-auto d-none d-lg-block">
     <ul class="navbar-nav float-end">
         <li class="nav-item activeBorderBottom mx-3">
-            <a class="nav-link text-light " href="index.html">Homepage</a>
+            <a class="nav-link text-light " href="index.php">Homepage</a>
         </li>
         
         <li class="nav-item mx-4">
@@ -95,13 +88,13 @@
 
 <div class="col-2 mx-auto d-none d-lg-block">
 <?php if($isLoggedIn) { ?>
-<form name="logout" method="post" action="logoutService.php">
+<form name="logout" method="post" action="userservice/logoutService.php">
 <button class="btn btn-primary" name="logout" alt="Log out" type="submit">
 <i class="bi bi-box-arrow-right">Log out</i>
 </button>
 </form>
 <?php } else { ?>
-    <a href="login.php" class="btn btn-primary">
+    <a href="userservice/login.php" class="btn btn-primary">
 <i class="bi bi-box-arrow-in-right"> Log in</i></a>
 <?php } ?>
 
@@ -174,7 +167,7 @@ class="bi bi-list"></i></span></button>
 
 
         <div class="d-flex justify-content-end my-4 mx-auto">
-             <form name="newPost" method="POST" action="createPost.php">
+             <form name="newPost" method="POST" action="postservice/createPost.php">
                  <button name="create_post" type="submit" class="btn btn-secondary">
                      <i class="bi bi-pencil-square"></i> New post
                     </button>
@@ -214,7 +207,7 @@ class="bi bi-list"></i></span></button>
 
                 <div class="container d-flex my-auto mx-auto">
 
-                <form name="view" method="POST" action="postPreview.php">
+                <form name="view" method="POST" action="postservice/postPreview.php">
                 <input id="postId" name="postId" type="hidden" value="<?php echo $post['id']?>">
                 <button name="view" class="btn" title="View post" type="submit">
                 <i class="bi bi-box-arrow-in-right "></i>
@@ -222,7 +215,7 @@ class="bi bi-list"></i></span></button>
                 </form> 
 
                 <?php if($isLoggedIn && $post['author'] === $_SESSION['id']){?>
-                <form name="delete" method="POST" action="postDelete.php">
+                <form name="delete" method="POST" action="postservice/postDelete.php">
                 <input id="postId" name="postId" type="hidden" value="<?php echo $post['id']?>">
                 <button name="delete"title="Remove" class="btn" type="submit">
                 <i class="bi bi-trash text-danger"></i>

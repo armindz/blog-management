@@ -1,9 +1,8 @@
 
 <?php
-
-require_once 'post.php';
-require_once 'dbPost.php';
-require_once 'dbUser.php';
+require_once __DIR__ . "/../models/post.php";
+require_once __DIR__ . "/../database/dbPost.php";
+require_once __DIR__ . "/../database/dbUser.php";
 
 
 
@@ -12,13 +11,6 @@ if(!isset($_SESSION))
 { 
     session_start(); 
 } 
-
-/*
-//redirect if logged in
-if(!isset($_SESSION['user'])){
-    header('location:login.php');
-}
-*/
 
 $postId = $_POST['postId'];
 
@@ -40,8 +32,8 @@ $userDb = new dbUser();
 <head>
 <meta charset="utf-8">
 <title>Post - Blog Management</title>
-<link rel="icon" href="img/logo/bmicon.png">
-<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="icon" href="../img/logo/bmicon.png">
+<link rel="stylesheet" href="../css/bootstrap.css">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet">
 <script rel="text/javascript" src="js/bootstrap.min.js"></script>
@@ -64,7 +56,7 @@ $userDb = new dbUser();
 <!-- logo brand -->
 <div class="col-2 mx-auto d-none d-lg-block float-end">
     <a class="navbar-brand">
-        <img class="logo" href="index.php" src="img/logo/bmLogo.png">
+        <img class="logo" href="index.php" src="../img/logo/bmLogo.png">
     </a>
 </div>
 <!-- /logo brand-->
@@ -73,7 +65,7 @@ $userDb = new dbUser();
 <div class="col-4 mx-auto d-none d-lg-block">
     <ul class="navbar-nav float-end">
         <li class="nav-item activeBorderBottom mx-3">
-            <a class="nav-link text-light " href="index.html">Homepage</a>
+            <a class="nav-link text-light " href="../index.php">Homepage</a>
         </li>
         
         <li class="nav-item mx-4">
@@ -107,13 +99,13 @@ $userDb = new dbUser();
 
 <div class="col-2 mx-auto d-none d-lg-block">
 <?php if($isLoggedIn) { ?>
-<form name="logout" method="post" action="logoutService.php">
+<form name="logout" method="post" action="../userservice/logoutService.php">
 <button class="btn btn-primary" name="logout" alt="Log out" type="submit">
 <i class="bi bi-box-arrow-right">Log out</i>
 </button>
 </form>
 <?php } else { ?>
-    <a href="login.php" class="btn btn-primary">
+    <a href="../userservice/login.php" class="btn btn-primary">
 <i class="bi bi-box-arrow-in-right"> Log in</i></a>
 <?php } ?>
 
@@ -131,7 +123,7 @@ $userDb = new dbUser();
 <!-- navbar brand -->
 <div class="col-11 d-block d-lg-none">
 
-    <a href="" class="navbar-brand mx-auto "><img id="logoSmall" src="img/logo/bmicon.png"></a>
+    <a href="" class="navbar-brand mx-auto "><img id="logoSmall" src="../img/logo/bmicon.png"></a>
 
     <!-- /navbar brand -->
 
@@ -147,13 +139,13 @@ class="bi bi-list"></i></span></button>
         <!-- navbar items -->
         <ul class="navbar-nav mr-auto ">
             <li class="nav-item activeBorderBottom">
-                <a class="nav-link text-light" href="index.html">Home</a>
+                <a class="nav-link text-light" href="../index.html">Home</a>
             </li>
          
 
             <li>
             <?php if($isLoggedIn) { ?>
-                <form name="logout" method="post" action="logoutService.php">
+                <form name="logout" method="post" action="userservice/logoutService.php">
                     <button class="btn btn-primary" name="logout" alt="Log out" type="submit">
                         <i class="bi bi-box-arrow-right"> Log out</i>
                     </button>
@@ -197,7 +189,7 @@ class="bi bi-list"></i></span></button>
        
 
         <div class="d-flex justify-content-end my-4 mx-auto">
-             <form name="posts" method="POST" action="index.php">
+             <form name="posts" method="POST" action="../index.php">
                  <button name="posts" type="submit" class="btn btn-secondary">
                  <i class="bi bi-arrow-90deg-left"></i> Back to posts
                     </button>
@@ -223,7 +215,7 @@ class="bi bi-list"></i></span></button>
 
 
 <div class="col-md-8 d-flex justify-content-center">
-  <img src="img/logo/bmicon.png">
+  <img src="../img/logo/bmicon.png">
   </div>
 
 
