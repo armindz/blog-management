@@ -100,13 +100,12 @@ if (isset($_POST['register'])) {
     <footer class="bg-light text-center text-lg-start">
 
         <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-            <a class="text-dark mx-3" href="index.php">Homepage</a>
-            <a class="text-dark mx-3" href="#">About us</a>
-            <a class="text-dark mx-3" href="contact.php">Contact us</a>
+            <a class="text-dark mx-3" href="../index.php">Homepage</a>
+            <a class="text-dark mx-3" href="../contactUs.php">Contact us</a>
             </br>
             </br>
             © 2021 Copyright:
-            <a class="text-dark" href="#">BM Inc. </a>
+            <a class="text-dark" href="armindz.github.io">BM Inc. </a>
         </div>
 
     </footer>

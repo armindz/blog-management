@@ -54,7 +54,7 @@ if (!isset($_SESSION['user'])) {
                     </li>
 
                     <li class="nav-item mx-4">
-                        <a class="nav-link disabled" href="#">My profile</a>
+                        <a class="nav-link text-light" href="../userservice/userProfile.php">My profile</a>
                     </li>
                 </ul>
 
@@ -118,7 +118,7 @@ if (!isset($_SESSION['user'])) {
                             <a class="nav-link text-light" href="../index.php">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" href="#">My profile</a>
+                            <a class="nav-link text-light" href="../userservice/userProfile.php">My profile</a>
                         </li>
 
 
@@ -142,16 +142,12 @@ if (!isset($_SESSION['user'])) {
     </header>
 
 
-
-
-
+    <!-- ------------------------- CREATE POST FORM --------------------------- -->
     <div class="container mx-auto my-4">
 
         <div class="d-flex justify-content-center">
             <h3> Create post </h3>
         </div>
-
-
 
         <div class="d-flex justify-content-end my-4 mx-auto">
             <form name="posts" method="POST" action="../index.php">
@@ -165,7 +161,7 @@ if (!isset($_SESSION['user'])) {
     <div class="container col-md-8 my-4 border shadow">
 
         <form name="createPost" method="POST" action="postService.php">
-
+            <!-- title -->
             <div class="row d-flex justify-content-center mx-auto my-4">
 
                 <div class="col-md-8 ">
@@ -174,10 +170,10 @@ if (!isset($_SESSION['user'])) {
                 </div>
 
             </div>
+            <!-- /title -->
 
-
+            <!-- date&img -->
             <div class="row d-flex justify-content-center mx-auto my-4">
-
 
                 <div class="col-md-4">
                     <label for="date" class="form-label">Date</label>
@@ -190,65 +186,44 @@ if (!isset($_SESSION['user'])) {
                     <input type="text" class="form-control" name="imageURL" id="postImage">
                 </div>
 
-
-
             </div>
+            <!-- /date&img -->
 
+            <!-- content -->
             <div class="row d-flex justify-content-center mx-auto my-4">
-
-
                 <div class="col-md-8">
                     <label for="content" class="form-label">Content</label>
                     <textarea class="form-control" name="content" id="postDate"></textarea>
                 </div>
-
-
             </div>
+            <!-- /content -->
 
             <div class="row d-flex justify-content-center mx-auto my-4">
-
 
                 <div class="col-md-8 d-flex justify-content-center my-4 mx-auto">
                     <input type="hidden" name="author" value="<?php echo $_SESSION['id']; ?>">
                     <button type="submit" name="createPost" class="btn btn-primary">Create post</button>
                 </div>
-
-
             </div>
-
-
         </form>
-
     </div>
-
-
-
-
-
-
-
-
+    <!-- ------------------------- END OF CREATE POST FORM --------------------------- -->
 
 
     <!-- -----------------------   FOOTER ----------------------- -->
     <footer class="bg-light text-center text-lg-start">
 
         <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-            <a class="text-dark mx-3" href="index.php">Homepage</a>
-            <a class="text-dark mx-3" href="#">About us</a>
+            <a class="text-dark mx-3" href="../index.php">Homepage</a>
+            <a class="text-dark mx-3" href="../contactUs.php">Contact us</a>
             </br>
             </br>
             © 2021 Copyright:
-            <a class="text-dark" href="#">BM Inc. </a>
+            <a class="text-dark" href="armindz.github.io">BM Inc. </a>
         </div>
 
     </footer>
-
-
     <!-- -----------------------  END OF FOOTER ----------------------- -->
-
-
 </body>
-
 
 </html>
