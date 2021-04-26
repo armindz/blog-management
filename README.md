@@ -5,8 +5,8 @@
   
 ## *Project description & abilities*
  
-When page is being viewed by not logged in user, user can get list of all posts and preview it separately, but when it comes to logged in user, 
-page gives additional features such as creating new posts and deleting posts he created. 
+When page is being viewed by not logged in user, user can get list of all posts and preview it separately. But when it comes to logged in user, 
+page gives additional features such as creating new posts and deleting posts user created. 
 Also, "**My profile**" section appears at navbar which can navigate to user's info page. In "**My profile**" section user gets list of all active posts he created.
 
 
