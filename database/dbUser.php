@@ -11,7 +11,7 @@ class dbUser extends dbConnect
     {
         $dbConn = new dbConnect();
     }
-
+    // store user based on its data
     public function storeUser($username, $password, $id)
     {
 
@@ -19,6 +19,7 @@ class dbUser extends dbConnect
         $query = $this->connect()->query($sql);
     }
 
+    // store user by forwarding user obj
     public function storeUserToDatabase($user)
     {
 
@@ -34,6 +35,7 @@ class dbUser extends dbConnect
         }
     }
 
+    // check if forwarded username is unique
     public function isUsernameUnique($username)
     {
 
@@ -48,6 +50,7 @@ class dbUser extends dbConnect
         }
     }
 
+    // get all users and return as list
     public function getAllUsers()
     {
 
@@ -64,6 +67,7 @@ class dbUser extends dbConnect
         return $data;
     }
 
+    // handle login data
     public function login($username, $password)
     {
 
@@ -85,6 +89,7 @@ class dbUser extends dbConnect
         }
     }
 
+    // return username related to specific user id
     public function getUsernameFromUserId($userId)
     {
 
@@ -101,6 +106,7 @@ class dbUser extends dbConnect
         }
     }
 
+    // return user based on it's data
     function getUserByUserData($username, $password)
     {
 
@@ -118,6 +124,8 @@ class dbUser extends dbConnect
         }
         return false;
     }
+
+    // get user's data
     function displayUsersData()
     {
 
@@ -131,7 +139,7 @@ class dbUser extends dbConnect
     }
 
 
-
+    // generate user id based on last inserted id in db
     function generateUserId()
     {
         $last_id = mysqli_insert_id($this->connect());
