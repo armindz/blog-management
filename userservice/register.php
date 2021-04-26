@@ -105,7 +105,7 @@ if (isset($_POST['register'])) {
             </br>
             </br>
             © 2021 Copyright:
-            <a class="text-dark" href="armindz.github.io">BM Inc. </a>
+            <a class="text-dark" href="https://www.armindz.github.io">BM Inc. </a>
         </div>
 
     </footer>

@@ -208,7 +208,7 @@ $isLoggedIn = isset($_SESSION['user']);
             <!-- form button -->
             <div class="row d-flex justify-content-center mx-auto my-4">
                 <div class="col-md-8 d-flex justify-content-center my-4 mx-auto">
-                    <button type="submit" name="contactSubmit" class="btn btn-primary">Submit</button>
+                   <a href="mailto:armindzibric6@gmail.com" class="btn btn-primary" type="submit">Submit</button></a>
                 </div>
             </div>
             <!-- /form button -->
@@ -228,7 +228,7 @@ $isLoggedIn = isset($_SESSION['user']);
             </br>
             </br>
             © 2021 Copyright:
-            <a class="text-dark" href="#">BM Inc. </a>
+            <a class="text-dark" href="https://www.armindz.github.io">BM Inc. </a>
         </div>
 
     </footer>

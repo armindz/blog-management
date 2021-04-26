@@ -220,7 +220,7 @@ if (!$isLoggedIn) {
 
             <div class="col-md-4 text-center">
                 <p>Number of posts: </p>
-                <p><?php echo count($listOfPosts); ?></p>
+                <p><?php  if ($listOfPosts) { echo count($listOfPosts); } ?></p>
             </div>
 
             <div class="col-md-4 text-center">
@@ -257,7 +257,7 @@ if (!$isLoggedIn) {
 
                                 <div class="container d-flex my-auto mx-auto">
 
-                                    <form name="view" method="POST" action="postservice/postPreview.php">
+                                    <form name="view" method="POST" action="../postservice/postPreview.php">
                                         <input id="postId" name="postId" type="hidden" value="<?php echo $post['id'] ?>">
                                         <button name="view" class="btn" title="View post" type="submit">
                                             <i class="bi bi-box-arrow-in-right "></i>
@@ -265,7 +265,7 @@ if (!$isLoggedIn) {
                                     </form>
 
                                     <?php if ($isLoggedIn && $post['author'] === $_SESSION['id']) { ?>
-                                        <form name="delete" method="POST" action="postservice/postDelete.php">
+                                        <form name="delete" method="POST" action="../postservice/postDelete.php">
                                             <input id="postId" name="postId" type="hidden" value="<?php echo $post['id'] ?>">
                                             <button name="delete" title="Remove" class="btn" type="submit">
                                                 <i class="bi bi-trash text-danger"></i>
@@ -298,7 +298,7 @@ if (!$isLoggedIn) {
             </br>
             </br>
             © 2021 Copyright:
-            <a class="text-dark" href="armindzibric.github.io">BM Inc. </a>
+            <a class="text-dark" href="https://www.armindz.github.io">BM Inc. </a>
         </div>
 
     </footer>

@@ -61,7 +61,7 @@ $isLoggedIn = isset($_SESSION['user']);
                     </li>
 
                     <li class="nav-item mx-4">
-                        <a class="nav-link disabled" href="#">My profile</a>
+                        <a class="nav-link text-light" href="../userservice/userProfile.php">My profile</a>
                     </li>
 
                 </ul>
@@ -129,6 +129,11 @@ $isLoggedIn = isset($_SESSION['user']);
                         <li class="nav-item">
                             <a class="nav-link text-light" href="../index.html">Home</a>
                         </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link text-light" href="../userservice/userProfile.php">My profile</a>
+                        </li>
+                
                         <!-- login&logout button -->
                         <li>
                             <?php if ($isLoggedIn) { ?>
@@ -159,7 +164,7 @@ $isLoggedIn = isset($_SESSION['user']);
         <!-- delete post button -->
         <div class="d-flex justify-content-start my-4 mx-auto">
             <?php if ($isLoggedIn && $post->get_author() === $_SESSION['id']) { ?>
-                <form name="delete" method="" action="postDelete.php">
+                <form name="delete" method="POST" action="postDelete.php">
                     <input id="postId" name="postId" type="hidden" value="<?php echo $post->get_id(); ?>">
                     <button name="delete" title="Remove" class="btn btn-danger" type="submit">
                         <i class="bi bi-trash">Delete post</i>
@@ -239,7 +244,7 @@ $isLoggedIn = isset($_SESSION['user']);
             </br>
             </br>
             © 2021 Copyright:
-            <a class="text-dark" href="armindz.github.io">BM Inc. </a>
+            <a class="text-dark" href="https://www.armindz.github.io">BM Inc. </a>
         </div>
 
     </footer>

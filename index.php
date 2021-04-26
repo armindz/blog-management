@@ -247,7 +247,7 @@ $isLoggedIn = isset($_SESSION['user']);
             </br>
             </br>
             © 2021 Copyright:
-            <a class="text-dark" href="#">BM Inc. </a>
+            <a class="text-dark" href="https://www.armindz.github.io">BM Inc. </a>
         </div>
 
     </footer>
