@@ -26,9 +26,9 @@ There are two tables in database:<br /> <br />
 ## *Testing*
 To test it with user's additional features, log in with already registrated users ( or registrate new one):
 
-username: **admin** password: **admin**
-username: **armin** password: **armin**
-username: **korisnik1** password: **korisnik1**
+username: **admin** password: **admin** <br />
+username: **armin** password: **armin** <br />
+username: **korisnik1** password: **korisnik1** <br />
 
 In config.php change configuration data according to your server configuration
 
