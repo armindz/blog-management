@@ -23,6 +23,8 @@ Tables in database:<br /> <br />
 • **posts** {id (PK), title, content, date, imageURL, author(FK users(id)))
 
 ## *Testing*
+
+ **[Blog Management on 000webhost](https://blog-management-bm.000webhostapp.com/)** 
 To test it with user's additional features, log in with already registered users ( or register new one):
 
 username: **admin** password: **admin** <br />
