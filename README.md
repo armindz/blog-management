@@ -24,7 +24,7 @@ Tables in database:<br /> <br />
 
 ## *Testing*
 
- **[Blog Management on 000webhost](https://blog-management-bm.000webhostapp.com/)** 
+ **[Blog Management on 000webhost](https://blog-management-bm.000webhostapp.com/)**  <br />
 To test it with user's additional features, log in with already registered users ( or register new one):
 
 username: **admin** password: **admin** <br />
